@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Formulario | Alexander Hz.</title>
+
+    <meta
+      name="description"
+      content="Formulario de registro completo con validaciones HTML que demuestra el uso de distintos tipos de inputs y buenas prácticas de accesibilidad."
+    />
+
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+
+    <link
+      rel="canonical"
+      href="https://alexander404-san.github.io/Proyecto-CSS/"
+    />
+
+    <!-- diseño general -->
+    <meta name="theme-color" content="#60a5fa " />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="header__title">Formulario de registro</h1>
+
+      <nav aria-label="Navegación secundaria">
+        <a class="nav__link" href="../index.html">← Volver al portafolio</a>
+      </nav>
+    </header>
+
+    <main class="main">
+      <form class="form" action="#" method="post" enctype="multipart/form-data">
+        <fieldset class="form__fieldset">
+          <!-- DATOS PERSONALES -->
+          <legend>Datos personales</legend>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              minlength="3"
+              maxlength="50"
+              pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s]+$"
+              placeholder=""
+              title="Solo se permiten letras y espacios"
+              autocomplete="name"
+              spellcheck="true"
+              autofocus
+            />
+            <label for="nombre">Nombre completo</label>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              placeholder=" "
+              list="dominios"
+            />
+            <label for="email">Correo electrónico</label>
+
+            <datalist id="dominios">
+              <option value="gmail.com"></option>
+              <option value="outlook.com"></option>
+              <option value="empresa.com"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              pattern="[0-9]{8}"
+              placeholder=""
+              title="Solo 8 digitos"
+            />
+            <label for="telefono">Teléfono</label>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="date"
+              id="fecha"
+              name="fecha"
+              required
+              title="Debes ser mayor de edad +18"
+              min="1926-03-20"
+              max="2008-03-20"
+              placeholder=""
+            />
+            <label for="fecha">Fecha de nacimiento:</label>
+          </div>
+        </fieldset>
+
+        <!-- CUENTA -->
+        <fieldset class="form__fieldset">
+          <legend>Datos de cuenta</legend>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              minlength="8"
+              maxlength="20"
+              pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$"
+              autocomplete="new-password"
+              placeholder=""
+              title="Debe contener al menos una mayúscula, un número y un carácter especial"
+            />
+            <label for="password">Contraseña</label>
+
+            <small>
+              Mínimo 8 caracteres, debe contener al menos una mayúscula, un
+              número y un carácter especial.
+            </small>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="password"
+              id="confirmar"
+              name="confirmar"
+              required
+              autocomplete="new-password"
+              placeholder=""
+              title="Debe de coincidir con la contraeña"
+            />
+            <label for="confirmar">Confirmar contraseña</label>
+          </div>
+        </fieldset>
+
+        <!-- GENERO -->
+        <fieldset class="form__fieldset">
+          <legend>Género</legend>
+
+          <div class="form__options">
+            <label>
+              <input type="radio" name="genero" value="m" required />
+              Masculino
+            </label>
+
+            <label>
+              <input type="radio" name="genero" value="f" />
+              Femenino
+            </label>
+
+            <label>
+              <input type="radio" name="genero" value="x" />
+              Otro
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- INTERESES -->
+        <fieldset class="form__fieldset">
+          <legend>Intereses</legend>
+
+          <div class="form__options">
+            <label>
+              <input type="checkbox" name="intereses" value="web" />
+              Desarrollo Web
+            </label>
+
+            <label>
+              <input type="checkbox" name="intereses" value="cloud" />
+              Cloud
+            </label>
+
+            <label>
+              <input type="checkbox" name="intereses" value="devops" />
+              DevOps
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- EXTRA -->
+        <fieldset class="form__fieldset">
+          <legend>Información adicional</legend>
+
+          <div class="form__group form__group--floating">
+            <select id="pais" name="pais" required>
+              <option value="" disabled selected hidden>
+                Seleccione un pais
+              </option>
+              <optgroup label="América">
+                <option value="sv">El Salvador</option>
+                <option value="mx">México</option>
+              </optgroup>
+              <optgroup label="Europa">
+                <option value="es">España</option>
+              </optgroup>
+            </select>
+            <label for="pais">País de origen</label>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              class="range"
+              type="range"
+              id="satisfaccion"
+              name="satisfaccion"
+              min="1"
+              max="10"
+              step="1"
+              value="5"
+            />
+            <label for="satisfaccion">Nivel de ingles</label>
+
+            <div class="range__small">
+              <small> Principiante </small>
+              <small> Experto </small>
+            </div>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input id="suenio" type="time" name="suenio" list="horas-suenio" />
+            <label for="suenio">A que hora te durmes?</label>
+
+            <datalist id="horas-suenio">
+              <option value="10:00"></option>
+              <option value="11:00"></option>
+              <option value="13:00" label="1 PM"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              list="navegadores"
+              id="navegador"
+              name="navegador"
+              placeholder=""
+            />
+            <label for="navegador">Tu navegador favorito</label>
+
+            <datalist id="navegadores">
+              <option value="Chrome"></option>
+              <option value="Firefox"></option>
+              <option value="Safari"></option>
+              <option value="Edge"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="search"
+              id="buscar-tag"
+              name="intereses-busqueda"
+              list="tags-comunes"
+              placeholder=" "
+            />
+            <label for="buscar-tag">Buscar etiquetas de interés</label>
+
+            <datalist id="tags-comunes">
+              <option value="Frontend"></option>
+              <option value="Backend"></option>
+              <option value="DevOps"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input type="color" id="color" name="color" list="colores-pro" />
+            <label for="color">Color favorito</label>
+
+            <datalist id="colores-pro">
+              <option value="#0055ff">Azul Eléctrico</option>
+              <option value="#ff0055">Rosa Neon</option>
+              <option value="#222222">Gris Oscuro</option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input type="date" id="diafav" name="diafav" list="dias-fav" />
+            <label for="diafav">Dia favorito</label>
+
+            <datalist id="dias-fav">
+              <option value="2026-05-01" label="Día del Trabajo"></option>
+              <option value="2026-12-25" label="Navidad"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="datetime-local"
+              id="diahorafav"
+              name="diahorafav"
+              list="diashoras-fav"
+            />
+            <label for="diahorafav">Fecha y hora favorita</label>
+
+            <datalist id="diashoras-fav">
+              <option
+                value="2026-05-01T09:00"
+                label="Día del Trabajo en la mañana"
+              ></option>
+              <option
+                value="2026-05-01T14:00"
+                label="Día del Trabajo en la tarde"
+              ></option>
+              <option
+                value="2026-12-25T13:00"
+                label="Navidad en la tarde"
+              ></option>
+              <option
+                value="2026-12-25T20:00"
+                label="Navidad en la noche"
+              ></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="week"
+              id="semanafav"
+              name="semanafav"
+              list="semanas-fav"
+            />
+            <label for="semanafav">Semana favorita</label>
+
+            <datalist id="semanas-fav">
+              <option value="2026-W13" label="Semana Santa"></option>
+              <option value="2026-W18" label="Entrega Parcial"></option>
+              <option value="2026-W22" label="Entrega Final"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input type="month" id="mesfav" name="mesfav" list="meses-fav" />
+            <label for="mesfav">Mes favorito</label>
+
+            <datalist id="meses-fav">
+              <option value="2026-03" label="Ciclo Primavera"></option>
+              <option value="2026-08" label="Ciclo Otoño"></option>
+              <option value="2027-01" label="Próximo Año"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="number"
+              id="salario"
+              name="salario"
+              inputmode="decimal"
+              placeholder="0"
+              max="10000"
+              min="0"
+              step="0.01"
+              title="Solo numeros del 0 al 10,000"
+              list="montos-comunes"
+            />
+            <label for="salario"> Cuanto dinero ganas mensual $ </label>
+
+            <datalist id="montos-comunes">
+              <option value="365"></option>
+              <option value="700"></option>
+              <option value="1500"></option>
+            </datalist>
+          </div>
+
+          <div class="form__group form__group--floating">
+            <input
+              type="url"
+              id="sweb"
+              name="sweb"
+              inputmode="url"
+              placeholder=""
+            />
+            <label for="sweb">Sitio web:</label>
+          </div>
+
+          <div class="form__group">
+            <label for="cv">Subir tu curriculum (PDF, DOC, DOCX):</label>
+            <input
+              type="file"
+              id="cv"
+              name="cv"
+              accept=".pdf,.doc,.docx"
+              multiple
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="foto">Sube una foto tuya (PNG, JPG, JPEG):</label>
+            <input
+              type="file"
+              id="foto"
+              name="foto"
+              accept=".png,.jpg,.jpeg"
+              capture="user"
+            />
+          </div>
+
+          <div class="form__group form__group--floating">
+            <textarea
+              id="bio"
+              name="bio"
+              minlength="20"
+              maxlength="200"
+              placeholder=""
+            ></textarea>
+            <label for="bio">Cuéntanos sobre ti...</label>
+          </div>
+        </fieldset>
+
+        <!-- BOTONES -->
+        <div class="form__actions">
+          <button type="reset" class="button button--ghost">Limpiar</button>
+          <button type="submit" class="button button--primary">
+            Enviar formulario
+          </button>
+        </div>
+      </form>
+    </main>
+    <footer class="footer">
+      <hr />
+
+      <a class="footer__link" href="../index.html">← Volver al portafolio</a>
+
+      <p>&copy; 2026 Alexander Hernandez. Todos los derechos reservados.</p>
+    </footer>
+  </body>
+</html>
