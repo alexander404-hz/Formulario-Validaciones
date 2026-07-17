@@ -4,7 +4,7 @@ Formulario de registro completo construido con **HTML5** y **CSS3**, que demuest
 
 🔗 **Demo en vivo:** [alexander404-hz.github.io/Formulario-Validaciones](https://alexander404-hz.github.io/Formulario-Validaciones/)
 
-[![Vista previa del portafolio](assets/img/readme.png)](https://alexander404-hz.github.io/Formulario-Validaciones/)
+[![Vista previa](assets/img/readme.png)](https://alexander404-hz.github.io/Formulario-Validaciones/)
 
 ## ✨ Características
 
